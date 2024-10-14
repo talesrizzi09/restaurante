@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Formulário de Reserva</title>
+</head>
+<body>
+    <div class="form-container">
+        <img src="/imgs/image.png" alt="Logo do Restaurante" class="logo"> 
+
+        <h1>Reserva de Mesa</h1>
+
+        <form id="reserva-form">
+            <label for="nome">Nome da pessoa:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="telefone">Número de telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required>
+
+            <label for="data">Data da reserva:</label>
+            <input type="date" id="data" name="data" required>
+
+            <label for="horario">Horário da reserva (19:30 - 21:30):</label>
+            <input type="time" id="horario" name="horario" min="19:30" max="21:30" required>
+
+            <label for="pessoas">Número de pessoas:</label>
+            <input type="number" id="pessoas" name="pessoas" min="1" required>
+
+            <label for="observacao">Observação:</label>
+            <textarea id="observacao" name="observacao" rows="3"></textarea>
+            <br>
+
+            <button type="submit">Solicitar Reserva</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
