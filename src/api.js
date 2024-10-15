@@ -1,26 +1,26 @@
-// server.js
+
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const conectarDB = require('./src/model/db'); // Certifique-se que o arquivo de conexão está correto
+const conectarDB = require('./src/model/db'); 
 const reservasRouter = require('./src/routers/reservas');
-const authRouter = require('./src/routers/auth'); // Rota de autenticação
+const authRouter = require('./src/routers/auth'); 
 
 dotenv.config();
 
 const app = express();
 
-// Conectar ao MongoDB
+
 conectarDB();
 
-// Middlewares
+
 app.use(cors());
-app.use(express.json()); // Para fazer o parsing do JSON nas requisições
+app.use(express.json()); 
 
-// Usando as rotas
+
 app.use('/api/reservas', reservasRouter);
-app.use('/api/auth', authRouter); // Adicionando a rota de autenticação
+app.use('/api/auth', authRouter); 
 
-// Iniciar o servidor
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

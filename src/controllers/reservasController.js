@@ -1,6 +1,6 @@
-const Reserva = require('../model/reserva'); // Importar o modelo Reserva
+const Reserva = require('../model/reserva'); 
 
-// Função para criar uma nova reserva
+
 const criarReserva = async (req, res) => {
     const { name, phone, date, notes, num_people } = req.body;
 
@@ -20,32 +20,32 @@ const criarReserva = async (req, res) => {
     }
 };
 
-// Função para listar reservas
+
 const listarReservas = async (req, res) => {
-    const { date } = req.query; // Obtém a data da query string
-    console.log("Data recebida para filtragem:", date); // Log da data recebida
+    const { date } = req.query; 
+    console.log("Data recebida para filtragem:", date); 
 
     try {
-        let query = {}; // Inicializa a consulta
+        let query = {}; 
 
-        // Se uma data foi fornecida, filtra as reservas por essa data
+        
         if (date) {
             const startDate = new Date(date);
             const endDate = new Date(startDate);
-            endDate.setDate(startDate.getDate() + 1); // Define o final do dia
+            endDate.setDate(startDate.getDate() + 1); 
 
             query.date = {
-                $gte: startDate, // Data maior ou igual
-                $lt: endDate, // Data menor que o final do dia
+                $gte: startDate, 
+                $lt: endDate, 
             };
-            console.log("Consulta de reservas:", query); // Log da consulta
+            console.log("Consulta de reservas:", query); 
         }
 
         const reservas = await Reserva.find(query);
-        console.log("Reservas encontradas:", reservas); // Log das reservas encontradas
+        console.log("Reservas encontradas:", reservas); 
         res.status(200).json(reservas);
     } catch (error) {
-        console.error("Erro ao listar reservas:", error); // Log do erro
+        console.error("Erro ao listar reservas:", error); 
         res.status(500).json({ message: 'Erro ao listar reservas', error: error.message });
     }
 };

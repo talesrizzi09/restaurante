@@ -1,4 +1,4 @@
-// Função para fazer login
+
 document.getElementById('login-form')?.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -17,14 +17,14 @@ document.getElementById('login-form')?.addEventListener('submit', async (event) 
         const data = await response.json();
         localStorage.setItem('token', data.token);
         alert('Login bem-sucedido!');
-        // Redirecionar para a página de reservas
+       
         window.location.href = 'reservas.html';
     } else {
         alert('Falha no login. Verifique suas credenciais.');
     }
 });
 
-// Função para listar reservas
+
 async function listarReservas() {
     const token = localStorage.getItem('token');
     
@@ -52,7 +52,7 @@ async function listarReservas() {
     }
 }
 
-// Chama a função listarReservas se estiver na página de reservas
+
 if (document.title === 'Lista de Reservas') {
     listarReservas();
 }

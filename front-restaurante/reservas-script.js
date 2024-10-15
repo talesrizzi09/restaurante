@@ -1,23 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
 
-    // Verifique se o token está disponível
+    
     if (!token) {
         alert("Você precisa estar logado para ver as reservas.");
-        window.location.href = "login.html"; // Redirecione para a página de login
+        window.location.href = "login.html"; 
         return;
     }
 
-    // Função para converter data de DD-MM-AAAA para AAAA-MM-DD
+  
     function converterData(data) {
-        const partes = data.split('-'); // Divide a string em partes
-        return `${partes[2]}-${partes[1]}-${partes[0]}`; // Retorna no formato AAAA-MM-DD
+        const partes = data.split('-'); 
+        return `${partes[2]}-${partes[1]}-${partes[0]}`; 
     }
 
-    // Função para carregar reservas
+    
     async function carregarReservas(data) {
         try {
-            // Converte a data se ela estiver definida
+            
             const dataConvertida = data ? converterData(data) : null;
             const url = dataConvertida ? `http://localhost:5000/api/reservas?date=${dataConvertida}` : 'http://localhost:5000/api/reservas';
             
@@ -28,12 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
             });
 
-            // Adicionando logs para depuração
+            
             console.log("Status da resposta:", response.status);
             console.log("Headers da resposta:", response.headers);
 
             if (!response.ok) {
-                const errorBody = await response.text(); // Captura a mensagem de erro
+                const errorBody = await response.text(); 
                 throw new Error(`Falha ao buscar reservas: ${errorBody}`);
             }
 
@@ -46,11 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Função para mostrar reservas na página
+    
     function mostrarReservas(reservas) {
-        console.log("Entrando na função mostrarReservas", reservas); // Log de entrada na função
+        console.log("Entrando na função mostrarReservas", reservas); 
         const listaReservas = document.getElementById("lista-reservas");
-        listaReservas.innerHTML = ""; // Limpa a lista anterior
+        listaReservas.innerHTML = ""; 
 
         if (reservas.length === 0) {
             listaReservas.innerHTML = "<p>Não há reservas disponíveis.</p>";
@@ -71,13 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Adicione um evento ao botão de filtrar
+    
     document.getElementById("filtrar-btn").addEventListener("click", () => {
-        const dataSelecionada = document.getElementById("data-selecionada").value; // Supondo que você tenha um input de data
-        console.log("Data de filtro selecionada:", dataSelecionada); // Log da data selecionada
+        const dataSelecionada = document.getElementById("data-selecionada").value; 
+        console.log("Data de filtro selecionada:", dataSelecionada); 
         carregarReservas(dataSelecionada);
     });
 
-    // Chame a função para carregar as reservas ao iniciar
-    carregarReservas(); // Chama a função inicialmente sem data
+    
+    carregarReservas(); 
 });

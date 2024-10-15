@@ -1,5 +1,5 @@
 document.getElementById('reserva-form').addEventListener('submit', async (event) => {
-    event.preventDefault(); // Impede o envio padrão do formulário
+    event.preventDefault(); 
 
     const nome = document.getElementById('nome').value;
     const telefone = document.getElementById('telefone').value;
@@ -8,11 +8,11 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
     const pessoas = document.getElementById('pessoas').value;
     const observacao = document.getElementById('observacao').value;
 
-    // Montar o objeto da reserva
+    
     const reserva = {
         name: nome,
         phone: telefone,
-        date: new Date(`${data}T${horario}:00`), // Formatar a data e hora para ISO
+        date: new Date(`${data}T${horario}:00`), 
         num_people: pessoas,
         notes: observacao,
     };
@@ -29,7 +29,7 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
         if (response.ok) {
             const data = await response.json();
             alert(`Reserva criada com sucesso! ID: ${data._id}`);
-            // Limpar o formulário
+            
             document.getElementById('reserva-form').reset();
         } else {
             const errorData = await response.json();

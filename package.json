@@ -1,7 +1,7 @@
 {
-  "name": "chatapi",
+  "name": "restaurante",
   "version": "1.0.0",
-  "description": "\"API-CHAT\"",
+  "description": "\"restaurante\"",
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/server.js",
@@ -13,7 +13,7 @@
   },
   "keywords": [
     "node",
-    "chat",
+    "restaurante",
     "api"
   ],
   "author": "tales rizzi",

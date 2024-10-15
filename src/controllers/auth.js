@@ -1,7 +1,7 @@
 const User = require('../model/user');
 const jwt = require('jsonwebtoken');
 
-// Registrar um novo usuário
+
 async function register(req, res) {
     const { username, password } = req.body;
     const newUser = new User({ username, password });
@@ -9,7 +9,7 @@ async function register(req, res) {
     res.status(201).json({ message: 'Usuário criado com sucesso!' });
 }
 
-// Fazer login
+
 async function login(req, res) {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
