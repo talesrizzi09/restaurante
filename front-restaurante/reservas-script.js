@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             
             const dataConvertida = data ? converterData(data) : null;
-            const url = dataConvertida ? `http://localhost:5000/api/reservas?date=${dataConvertida}` : 'http://localhost:5000/api/reservas';
+            const url = dataConvertida ? `http://localhost:4000/api/reservas?date=${dataConvertida}` : 'http://localhost:4000/api/reservas';
             
             const response = await fetch(url, {
                 method: "GET",
