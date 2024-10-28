@@ -6,6 +6,12 @@ const reservaSchema = new mongoose.Schema({
     date: { type: Date, required: true },
     notes: { type: String },
     num_people: { type: Number, required: true },
+    status: {
+        type: String,
+        default: 'pendente',
+        enum: ['pendente', 'confirmada', 'cancelada'],
+    },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Reserva', reservaSchema);
+
