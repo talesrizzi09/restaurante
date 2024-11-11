@@ -12,6 +12,11 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
     const hoje = new Date().toISOString().split("T")[0];
     document.getElementById("data").setAttribute("min", hoje);
 
+    if (!horario) {
+        alert("Por favor, selecione um horário para a reserva.");
+        return;
+    }
+
     const reserva = {
         name: nome,
         phone: telefone,
@@ -67,4 +72,25 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+function selecionarHorario(horario, botao) {
+    // Define o valor do campo oculto de horário
+    document.getElementById('horario').value = horario;
+
+    // Remove a classe 'selecionado' de todos os botões
+    const botoes = document.querySelectorAll('.horario-opcao');
+    botoes.forEach((botao) => {
+        botao.classList.remove('selecionado');
+    });
+
+    // Adiciona a classe 'selecionado' ao botão clicado
+    botao.classList.add('selecionado');
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Definindo as opções de horário para 19:30 e 21:30
+    const horarioInput = document.getElementById('horario');
+    horarioInput.setAttribute('min', '19:30');  // Define o horário mínimo
+    horarioInput.setAttribute('max', '21:30');  // Define o horário máximo
+});
 

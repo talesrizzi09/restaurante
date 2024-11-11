@@ -16,6 +16,7 @@
 
         <h1>Reserva de Mesa</h1>
 
+        
         <form id="reserva-form">
             <label for="nome">Nome da pessoa:</label>
             <input type="text" id="nome" name="nome" required>
@@ -26,8 +27,14 @@
             <label for="data">Data da reserva:</label>
             <input type="date" id="data" name="data" required>
 
-            <label for="horario">Horário da reserva (19:30 - 21:30):</label>
-            <input type="time" id="horario" name="horario" min="19:30" max="21:30" required>
+            <label for="horario">Horário da reserva:</label>
+            <div class="horarios-container">
+                <button type="button" class="horario-opcao" onclick="selecionarHorario('19:30', this)">19:30</button>
+                <button type="button" class="horario-opcao" onclick="selecionarHorario('21:30', this)">21:30</button>
+            </div>
+
+            <input type="hidden" id="horario" name="horario" required>
+
 
             <label for="pessoas">Número de pessoas:</label>
             <input type="number" id="pessoas" name="pessoas" min="1" required>

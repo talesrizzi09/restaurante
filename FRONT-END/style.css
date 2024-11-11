@@ -72,3 +72,30 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
+.horarios-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.horario-opcao {
+    padding: 10px 20px;
+    background-color: #45a049;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.horario-opcao:hover {
+    background-color: #e0e0e0;
+}
+
+.horario-opcao.selecionado {
+    background-color: #285e2a;
+    color: white;
+    border-color: #285e2a;
+}
