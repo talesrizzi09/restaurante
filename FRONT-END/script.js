@@ -1,5 +1,5 @@
 document.getElementById('reserva-form').addEventListener('submit', async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();  
 
     const nome = document.getElementById('nome').value;
     const telefone = document.getElementById('telefone').value;
@@ -9,6 +9,9 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
     const observacao = document.getElementById('observacao').value;
 
     
+    const hoje = new Date().toISOString().split("T")[0];
+    document.getElementById("data").setAttribute("min", hoje);
+
     const reserva = {
         name: nome,
         phone: telefone,
@@ -40,3 +43,28 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
         alert('Erro ao enviar a reserva. Tente novamente mais tarde.');
     }
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    const hoje = new Date().toISOString().split("T")[0];
+    const dataInput = document.getElementById("data");
+    dataInput.setAttribute("min", hoje);
+
+    
+    const dataMaxima = new Date();
+    dataMaxima.setMonth(dataMaxima.getMonth() + 6); 
+    const dataMaximaFormatada = dataMaxima.toISOString().split("T")[0]; 
+    dataInput.setAttribute("max", dataMaximaFormatada); 
+
+    dataInput.addEventListener('input', function() {
+        const dataSelecionada = dataInput.value;
+        if (dataSelecionada && (dataSelecionada > dataMaximaFormatada)) {
+            dataInput.setCustomValidity("Você só pode fazer reservas até 6 meses a partir de hoje.");
+        } else {
+            dataInput.setCustomValidity("");
+        }
+    });
+});
+
+
