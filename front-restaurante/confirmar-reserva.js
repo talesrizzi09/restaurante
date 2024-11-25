@@ -6,7 +6,7 @@ const Reserva = require("../src/model/reserva"); // Modelo mongoose para a cole�
 const router = express.Router();
 
 // Configuração do Twilio (substitua pelos dados reais)
-const client = twilio('ACdc931f028e2a1b0d05a36e1eca67b2fb', '68e55fe775b9d0994b2f1d3695df0df6');
+
 
 // Endpoint para confirmar reserva
 router.post("/api/reservas/:id/confirmar", async (req, res) => {
