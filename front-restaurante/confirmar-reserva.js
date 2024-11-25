@@ -23,7 +23,7 @@ router.post("/api/reservas/:id/confirmar", async (req, res) => {
         // Envia a mensagem de confirmação para o telefone do cliente
         await client.messages.create({
             body: `Olá, ${reserva.name}! Sua reserva para ${new Date(reserva.date).toLocaleDateString()} foi confirmada. Número de pessoas: ${reserva.num_people}.`,
-            from: '+5551998611390', // Número Twilio
+            from: '', // Número Twilio
             to: reserva.phone
         });
 
