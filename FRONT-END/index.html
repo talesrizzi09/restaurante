@@ -17,6 +17,7 @@
             <div id="buttons">
                 <button id="button-reserva">Fazer reserva</button>
             </div>
+
         </header>
         <main>
             <div class="top-container">
@@ -52,5 +53,25 @@
             window.location.href = 'reserva.html';
         });
     </script>
+
+
+            <input type="hidden" id="horario" name="horario" required>
+
+
+            <label for="pessoas">Número de pessoas:</label>
+            <input type="number" id="pessoas" name="pessoas" min="1" required>
+
+            <label for="observacao">Observação:</label>
+            <textarea id="observacao" name="observacao" rows="3"></textarea>
+            <br>
+
+            <button type="submit">Solicitar Reserva</button>
+        </form>
+        <div id="mensagem-container"></div>
+    </div>
+
+
+    <script src="script.js"></script>
+
 </body>
 </html>
