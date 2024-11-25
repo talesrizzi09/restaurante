@@ -1,3 +1,24 @@
+// Variável para armazenar o nome do cliente
+let nomeCliente = '';
+
+// Função para carregar reservas
+async function carregarReservas() {
+    if (!nomeCliente) return; // Não faz a busca se o nome não estiver definido
+
+    try {
+        const response = await fetch(`http://localhost:5000/api/reservas/${nomeCliente}`);
+        if (response.ok) {
+            const reservas = await response.json();
+            exibirReservas(reservas); // Você deve ter essa função para exibir as reservas
+        } else {
+            console.error('Erro ao buscar reservas');
+        }
+    } catch (error) {
+        console.error('Erro ao buscar reservas:', error);
+    }
+}
+
+// Adiciona o evento de submit ao formulário de reservas
 document.getElementById('reserva-form').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -7,7 +28,11 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
     const horario = document.getElementById('horario').value;
     const pessoas = document.getElementById('pessoas').value;
     const observacao = document.getElementById('observacao').value;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 4a5615fea743f58e5a086da4aae1be7572f888f5
     const hoje = new Date().toISOString().split("T")[0];
     document.getElementById("data").setAttribute("min", hoje);
 
@@ -15,6 +40,7 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
         exibirMensagem("Por favor, selecione um horário para a reserva.", "erro");
         return;
     }
+
 
     const reserva = {
         name: nome,
@@ -35,9 +61,15 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
 
         if (response.ok) {
             const data = await response.json();
+<<<<<<< HEAD
             exibirMensagem(`Reserva criada com sucesso!`, "sucesso");
+=======
+            alert(`Reserva criada com sucesso! ID: ${data._id}`);
+            nomeCliente = nome; // Armazena o nome do cliente
+>>>>>>> 4a5615fea743f58e5a086da4aae1be7572f888f5
 
             document.getElementById('reserva-form').reset();
+            await carregarReservas(); // Carrega as reservas novamente
         } else {
             const errorData = await response.json();
             exibirMensagem(`Erro ao criar reserva: ${errorData.message}`, "erro");
@@ -48,7 +80,32 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
     }
 });
 
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", function () {
+=======
+
+// Função para exibir reservas
+function exibirReservas(reservas) {
+    const listaReservas = document.getElementById('lista-reservas');
+    listaReservas.innerHTML = ''; // Limpa a lista antes de exibir
+
+    reservas.forEach(reserva => {
+        const li = document.createElement('li');
+        li.textContent = `Reserva: ${reserva.date}, Status: ${reserva.status}`; // Exibir detalhes da reserva
+        listaReservas.appendChild(li);
+    });
+}
+
+// Chama carregarReservas ao carregar a página
+window.onload = async () => {
+    nomeCliente = document.getElementById('nome').value; // Captura o nome do cliente
+    await carregarReservas(); // Carrega as reservas na inicialização
+};
+=======
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+>>>>>>> 4a5615fea743f58e5a086da4aae1be7572f888f5
     const hoje = new Date().toISOString().split("T")[0];
     const dataInput = document.getElementById("data");
     dataInput.setAttribute("min", hoje);
@@ -85,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
     horarioInput.setAttribute('max', '21:30');
 });
 
+<<<<<<< HEAD
 function exibirMensagem(mensagem, tipo) {
     const container = document.getElementById("mensagem-container");
     const novaMensagem = document.createElement("div");
@@ -98,3 +156,6 @@ function exibirMensagem(mensagem, tipo) {
         novaMensagem.remove();
     }, 5000);
 }
+=======
+
+>>>>>>> 4a5615fea743f58e5a086da4aae1be7572f888f5
