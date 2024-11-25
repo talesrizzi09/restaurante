@@ -1,5 +1,5 @@
 const express = require('express');
-const { criarReserva, listarReservas } = require('../controllers/reservasController'); // Importando funções do controlador
+const { criarReserva, listarReservas, confirmarReserva } = require('../controllers/reservasController'); // Importando funções do controlador
 
 const router = express.Router();
 
@@ -8,5 +8,7 @@ router.post('/', criarReserva);
 
 // Rota para listar reservas
 router.get('/', listarReservas);
+
+router.post('/:id/confirmar', confirmarReserva);
 
 module.exports = router;
