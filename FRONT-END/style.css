@@ -99,3 +99,53 @@ button:hover {
     color: white;
     border-color: #285e2a;
 }
+
+.mensagem {
+    position: fixed;
+    top: 60%; /* Ajuste para centralizar mais para baixo */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta o ponto de referência para o centro */
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #fff;
+    z-index: 1000;
+    opacity: 0.9;
+    animation: fadeInOut 3s;
+    text-align: center; /* Centraliza o texto */
+    max-width: 80%; /* Evita que a mensagem ocupe muito espaço */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+}
+
+.mensagem.sucesso {
+    background-color: #4CAF50; /* Verde para sucesso */
+}
+
+.mensagem.erro {
+    background-color: #f44336; /* Vermelho para erro */
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -60%); }
+    10% { opacity: 0.9; transform: translate(-50%, -50%); }
+    90% { opacity: 0.9; }
+    100% { opacity: 0; transform: translate(-50%, -40%); }
+}
+
+#login-btn {
+    position: fixed; /* Fixa o botão na tela */
+    top: 10px; /* Distância do topo da página */
+    right: 10px; /* Distância da borda direita da página */
+    background-color: #285e2a; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 22px; /* Tamanho da fonte */
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de mão ao passar por cima */
+    transition: background-color 0.3s; /* Transição suave */
+}
+
+#login-btn:hover {
+    background-color: #0a250b; /* Cor de fundo mais escura ao passar o mouse */
+}
