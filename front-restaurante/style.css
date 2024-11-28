@@ -196,3 +196,45 @@ div {
     color: #4e4e4e;
 }
 
+#mensagem-alerta {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 128, 0, 0.8); /* Vermelho para erro */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    display: none; /* Esconde por padrão */
+    z-index: 1000;
+    text-align: center;
+}
+
+.mensagem.sucesso {
+    background-color: rgba(0, 128, 0, 0.8); /* Verde para sucesso */
+}
+
+.confirmar-btn {
+    background-color: #70975e; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border: none; /* Remover borda padrão */
+    padding: 10px 20px; /* Espaçamento interno */
+    font-size: 15px; /* Tamanho da fonte */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor em formato de mão */
+    transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Efeito quando o mouse passa sobre o botão */
+.confirmar-btn:hover {
+    background-color: #45a049; /* Cor de fundo mais escura ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento de tamanho */
+}
+
+/* Efeito quando o botão é clicado */
+.confirmar-btn:active {
+    background-color: #388e3c; /* Cor de fundo mais escura ao clicar */
+    transform: scale(0.98); /* Reduzir tamanho ao clicar */
+}

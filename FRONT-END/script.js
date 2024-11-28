@@ -6,7 +6,7 @@ async function carregarReservas() {
     if (!nomeCliente) return; // Não faz a busca se o nome não estiver definido
 
     try {
-        const response = await fetch(`http://localhost:5000/api/reservas/${nomeCliente}`);
+        const response = await fetch(`http://localhost:4000/api/reservas/${nomeCliente}`);
         if (response.ok) {
             const reservas = await response.json();
             exibirReservas(reservas); // Você deve ter essa função para exibir as reservas
@@ -28,11 +28,7 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
     const horario = document.getElementById('horario').value;
     const pessoas = document.getElementById('pessoas').value;
     const observacao = document.getElementById('observacao').value;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 4a5615fea743f58e5a086da4aae1be7572f888f5
     const hoje = new Date().toISOString().split("T")[0];
     document.getElementById("data").setAttribute("min", hoje);
 
@@ -61,12 +57,8 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
 
         if (response.ok) {
             const data = await response.json();
-<<<<<<< HEAD
-            exibirMensagem(`Reserva criada com sucesso!`, "sucesso");
-=======
-            alert(`Reserva criada com sucesso! ID: ${data._id}`);
-            nomeCliente = nome; // Armazena o nome do cliente
->>>>>>> 4a5615fea743f58e5a086da4aae1be7572f888f5
+            exibirMensagem("Reserva criada com sucesso!", "sucesso");
+             nomeCliente = nome;
 
             document.getElementById('reserva-form').reset();
             await carregarReservas(); // Carrega as reservas novamente
@@ -80,9 +72,6 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
     }
 });
 
-<<<<<<< HEAD
-document.addEventListener("DOMContentLoaded", function () {
-=======
 
 // Função para exibir reservas
 function exibirReservas(reservas) {
@@ -101,11 +90,10 @@ window.onload = async () => {
     nomeCliente = document.getElementById('nome').value; // Captura o nome do cliente
     await carregarReservas(); // Carrega as reservas na inicialização
 };
-=======
+
 
 document.addEventListener("DOMContentLoaded", function() {
     
->>>>>>> 4a5615fea743f58e5a086da4aae1be7572f888f5
     const hoje = new Date().toISOString().split("T")[0];
     const dataInput = document.getElementById("data");
     dataInput.setAttribute("min", hoje);
@@ -142,20 +130,13 @@ document.addEventListener("DOMContentLoaded", function () {
     horarioInput.setAttribute('max', '21:30');
 });
 
-<<<<<<< HEAD
 function exibirMensagem(mensagem, tipo) {
-    const container = document.getElementById("mensagem-container");
-    const novaMensagem = document.createElement("div");
-
-    novaMensagem.className = `mensagem ${tipo}`;
-    novaMensagem.textContent = mensagem;
-
-    container.appendChild(novaMensagem);
+    const mensagemBox = document.createElement('div');
+    mensagemBox.textContent = mensagem;
+    mensagemBox.className = `mensagem ${tipo}`; // Classe CSS para estilizar a mensagem
+    document.body.appendChild(mensagemBox);
 
     setTimeout(() => {
-        novaMensagem.remove();
-    }, 5000);
+        mensagemBox.remove();
+    }, 3000); // Remove a mensagem após 3 segundos
 }
-=======
-
->>>>>>> 4a5615fea743f58e5a086da4aae1be7572f888f5
