@@ -1,4 +1,8 @@
 const Reserva = require('../model/reserva'); 
+const twilio = require ('twilio');
+const accountSid = 'ACdc931f028e2a1b0d05a36e1eca67b2fb'; // Substitua com suas credenciais
+const authToken = '3abac777aa984cc88d024825f6dce992'; // Substitua com suas credenciais
+const client = twilio(accountSid, authToken);
 
 
 const criarReserva = async (req, res) => {
@@ -49,10 +53,30 @@ const listarReservas = async (req, res) => {
         res.status(500).json({ message: 'Erro ao listar reservas', error: error.message });
     }
 };
+async function enviarMensagemWhatsApp(nome, dataReserva) {
+    try {
+      const data = new Date(dataReserva);
+      data.setSeconds(0);
+  
+      const dia = data.toLocaleDateString();
+      const hora = data.toLocaleTimeString();
+      
+      await client.messages
+        .create({
+          from: "whatsapp:+14155238886",
+          contentSid: "HX2cf91d30472ac14098462687ef1c1961",
+          contentVariables: `{"1": "${nome}","2":"${dia}", "3":"${hora}"}`,
+          to: "whatsapp:+555198611390",
+        })
+        .then((message) => console.log(message.sid))
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 async function confirmarReserva(req, res) {
     const { id } = req.params; // Pega o ID da reserva da URL
-
+    console.log("123");
     try {
         const reserva = await Reserva.findById(id); // Encontra a reserva pelo ID
 
@@ -63,13 +87,16 @@ async function confirmarReserva(req, res) {
         // Lógica para confirmar a reserva
         reserva.status = 'confirmada'; // Supondo que você tenha um campo de status
         await reserva.save(); // Salva as alterações no banco de dados
-
+        
+        await enviarMensagemWhatsApp(reserva.name, reserva.date); 
+        
         return res.status(200).json({ message: 'Reserva confirmada com sucesso.' });
     } catch (error) {
         console.error('Erro ao confirmar reserva:', error);
         return res.status(500).json({ message: 'Erro ao confirmar reserva.' });
     }
 }
+
 
 
 exports.getReservasPorNome = async (req, res) => {

@@ -16,7 +16,7 @@ document.getElementById('login-form')?.addEventListener('submit', async (event) 
     if (response.ok) {
         const data = await response.json();
         localStorage.setItem('token', data.token);
-        alert('Login bem-sucedido!');
+        
        
         window.location.href = 'reservas.html';
     } else {

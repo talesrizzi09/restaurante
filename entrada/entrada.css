@@ -1,0 +1,310 @@
+body {
+    font-family: 'Barlow', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8fdf7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.index-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#logo {
+    height: 60px;
+    width: 60px;
+    margin: auto;
+    margin-left: 0;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 20px;
+}
+
+#button-reserva {
+    background-color: #285e2a;
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    width: 120px;
+    height: 70px;
+    font-size: 18px;
+}
+
+#button-reserva:hover {
+    background-color: #0a250b;
+}
+
+#login-btn {
+    background-color: #285e2a;
+    color: white;
+    font-size: 18px; 
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 120px;
+    height: 70px;
+}
+
+#login-btn:hover {
+    background-color: #0a250b;
+}
+
+#p-reserva {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.top-container {
+    position: relative;
+    background-image: url('../imgs/restaurante.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-attachment: fixed; 
+}
+
+.mid-container {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+
+.bottom-container {
+    font-size: 20px;
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+
+.faq {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin: 50px;
+    text-align: justify;
+}
+
+footer {
+    background-color: #285e2a;
+    font-size: 18px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+}
+
+#h2-footer {
+    color: white;
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+.agradecimentos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#agradecimento {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.form-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.form-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.h1-reserva {
+    font-size: 24px;
+    color: #CBAB58;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4d6656;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+input, textarea, button {
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #c3e6cd;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #3fa769;
+    box-shadow: 0 0 3px rgba(63, 167, 105, 0.5);
+}
+
+textarea {
+    resize: none;
+}
+
+.horarios-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.horario-opcao {
+    padding: 10px 20px;
+    background-color: #eaf5ed;
+    border: 1px solid #c3e6cd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.horario-opcao:hover {
+    background-color: #d3f0da;
+}
+
+.horario-opcao.active {
+    background-color: #3fa769;
+    color: #fff;
+    border-color: #2b7a4b;
+    transform: scale(1.1);
+}
+
+button[type="submit"] {
+    background-color: #2b7a4b;
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #23633a;
+}
+
+@media (max-width: 480px) {
+    .top-container {
+        width: 100%;
+        height: 600px;
+    }
+    
+    .form-container {
+        padding: 15px 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input, textarea, button {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .horario-opcao {
+        padding: 8px 16px;
+    }
+}
+
+.card {
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    margin: 15px; 
+    text-align: center; 
+  
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+
+
