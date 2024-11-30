@@ -1,13 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #70975e;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #70975e;
 }
 
 .form-container {
@@ -19,15 +18,14 @@ body {
     box-shadow: 0px 1px 5px 2px rgba(63, 63, 63, 0.8);
 }
 
-.logo{
-    display: block; 
+.logo {
+    display: block;
     margin: 0 auto 10px;
-    max-width: 100%; 
-    height: auto; 
+    max-width: 100%;
+    height: auto;
     width: 100px;
     border-radius: 10px;
 }
-
 
 h1 {
     text-align: center;
@@ -102,9 +100,9 @@ button:hover {
 
 .mensagem {
     position: fixed;
-    top: 60%; /* Ajuste para centralizar mais para baixo */
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta o ponto de referência para o centro */
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 15px 20px;
     border-radius: 8px;
     font-size: 16px;
@@ -112,17 +110,17 @@ button:hover {
     z-index: 1000;
     opacity: 0.9;
     animation: fadeInOut 3s;
-    text-align: center; /* Centraliza o texto */
-    max-width: 80%; /* Evita que a mensagem ocupe muito espaço */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+    text-align: center;
+    max-width: 80%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .mensagem.sucesso {
-    background-color: #4CAF50; /* Verde para sucesso */
+    background-color: #4CAF50;
 }
 
 .mensagem.erro {
-    background-color: #f44336; /* Vermelho para erro */
+    background-color: #f44336;
 }
 
 @keyframes fadeInOut {
@@ -133,19 +131,33 @@ button:hover {
 }
 
 #login-btn {
-    position: fixed; /* Fixa o botão na tela */
-    top: 10px; /* Distância do topo da página */
-    right: 10px; /* Distância da borda direita da página */
-    background-color: #285e2a; /* Cor de fundo */
-    color: white; /* Cor do texto */
-    padding: 10px 20px; /* Espaçamento interno */
-    font-size: 22px; /* Tamanho da fonte */
-    border: none; /* Remove a borda */
-    border-radius: 5px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de mão ao passar por cima */
-    transition: background-color 0.3s; /* Transição suave */
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #285e2a;
+    color: white;
+    padding: 10px 20px;
+    font-size: 22px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 #login-btn:hover {
-    background-color: #0a250b; /* Cor de fundo mais escura ao passar o mouse */
+    background-color: #0a250b;
+}
+
+#inicio-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #285e2a;
+    color: white;
+    padding: 10px 20px;
+    font-size: 22px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
