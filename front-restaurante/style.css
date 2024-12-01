@@ -196,3 +196,45 @@ div {
     color: #4e4e4e;
 }
 
+#mensagem-alerta {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 128, 0, 0.8); 
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    display: none; 
+    z-index: 1000;
+    text-align: center;
+}
+
+.mensagem.sucesso {
+    background-color: rgba(0, 128, 0, 0.8);
+}
+
+.confirmar-btn {
+    background-color: #70975e; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    font-size: 15px; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+
+.confirmar-btn:hover {
+    background-color: #45a049; 
+    transform: scale(1.05);
+}
+
+
+.confirmar-btn:active {
+    background-color: #388e3c; 
+    transform: scale(0.98);
+}

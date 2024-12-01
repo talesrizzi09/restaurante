@@ -12,49 +12,27 @@
     <link rel="shortcut icon" href="../imgs/image.png"/>
 </head>
 <body>
-    <div class="index-page">
-        <header>
-            <img src="../imgs/image.png" id="logo">
-            <div id="buttons">
-                <button id="button-reserva">Fazer reserva</button>
-            </div>
+    <div class="form-container">
+        <img src="/imgs/image.png" alt="Logo do Restaurante" class="logo"> 
 
-        </header>
-        <main>
-            <div class="top-container">
-                <h1>Seja bem vindo ao restaurante come bem</h1>
-            </div>
-            <div class="mid-container">
-                <p id="p-reserva">Desfrute de uma experiência gastronômica única e reserve sua mesa com facilidade!<p>
-            </div>
-            <div class="bottom-container">
-                <p>No Restaurante Come bem, oferecemos uma culinária excepcional em um ambiente acolhedor. Com nossa plataforma de reservas online, você pode garantir sua mesa rapidamente. Escolha a data, horário e número de pessoas e aproveite o melhor da nossa cozinha</p>
-            </div>
-            <div class="faq">
-                <h2>Aqui estão algumas perguntas comuns que nossos clientes costumam ter sobre o processo de reserva. Caso não encontre a resposta para sua dúvida, entre em contato conosco!</h2>
-                <ul>
-                    <li><strong>Quais são os horários disponíveis para reservas?</strong> "Aceitamos reservas nos horários de 19:30 e 21:30. Se precisar de um horário diferente, entre em contato para verificar a disponibilidade."</li>
-                    <li><strong>É necessário pagar antecipadamente para reservar?</strong> "Não, as reservas não requerem pagamento antecipado. Você pode pagar sua refeição no momento em que estiver no restaurante."</li>
-                    <li><strong>Posso cancelar minha reserva?</strong> "Sim, você pode cancelar sua reserva com até 24 horas de antecedência. Para alterações, entre em contato conosco por telefone ou e-mail."</li>
-                </ul>
-            </div>
-            <footer>
-                <h2 id="h2-footer">Alguma dúvida? Entre em contanto!</h2>
-                <p>Endereço: Rua Guilherme Lahm, 1778 - Centro - Taquara - RS</p>
-                <p>Email: restaurantecomebem@gmail.com</p>
-                <p>Telefone: +55 51 8958-8706</p>
-                <div class="agradecimentos">
-                    <p id="agredecimento">Obrigado pela preferência!</p>
-                </div>
-            </footer>
-        </main>
-    </div>
-    <script>
-        document.getElementById('button-reserva').addEventListener('click', function() {
-            window.location.href = 'reserva.html';
-        });
-    </script>
+        <h1>Reserva de Mesa</h1>
 
+        
+        <form id="reserva-form">
+            <label for="nome">Nome da pessoa:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="telefone">Número de telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required>
+
+            <label for="data">Data da reserva:</label>
+            <input type="date" id="data" name="data" required>
+
+            <label for="horario">Horário da reserva:</label>
+            <div class="horarios-container">
+                <button type="button" class="horario-opcao" onclick="selecionarHorario('19:30', this)">19:30</button>
+                <button type="button" class="horario-opcao" onclick="selecionarHorario('21:30', this)">21:30</button>
+            </div>
 
             <input type="hidden" id="horario" name="horario" required>
 
@@ -69,12 +47,13 @@
             <button type="submit">Solicitar Reserva</button>
         </form>
         <div id="mensagem-container"></div>
+        
     </div>
-
     <button id="login-btn" onclick="window.location.href='../front-restaurante/admin.html'">Sou Admin</button>
     <button id="inicio-btn" onclick="window.location.href='../entrada/index.html'">Início</button>
 
-    <script src="script.js"></script>
 
+
+    <script src="script.js"></script>
 </body>
 </html>

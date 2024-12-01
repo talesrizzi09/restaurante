@@ -1,50 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem("token");
+    const mensagemAlerta = document.getElementById("mensagem-alerta");
+    const dataSelecionadaInput = document.getElementById("data-selecionada");
+    const filtrarBtn = document.getElementById("filtrar-btn");
 
-    // Verifica se o usuário está logado
+    let reservasCache = []; // Armazena as reservas sem filtro aplicado
+
+    // Função para exibir mensagens de erro ou sucesso
+    function exibirMensagem(texto, tipo = "erro") {
+        mensagemAlerta.textContent = texto;
+        mensagemAlerta.className = `mensagem ${tipo}`;
+        mensagemAlerta.style.display = "block";
+        setTimeout(() => {
+            mensagemAlerta.style.display = "none";
+        }, 5000);
+    }
+
     if (!token) {
-        alert("Você precisa estar logado para ver as reservas.");
-        window.location.href = "login.html"; 
+        exibirMensagem("Você precisa estar logado para ver as reservas.");
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 3000);
         return;
     }
 
-    // Função para converter a data no formato DD-MM-AAAA para o formato esperado pela API
-    function converterData(data) {
-        const partes = data.split('-'); 
-        return `${partes[2]}-${partes[1]}-${partes[0]}`; 
-    }
-
-    // Carregar as reservas
-    async function carregarReservas(data) {
+    // Função para carregar todas as reservas do cliente
+    async function carregarReservas() {
         try {
-            const dataConvertida = data ? converterData(data) : null;
-            const url = dataConvertida ? `http://localhost:4000/api/reservas?date=${dataConvertida}` : 'http://localhost:4000/api/reservas';
-            
-            const response = await fetch(url, {
+            const response = await fetch('http://localhost:4000/api/reservas', {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             });
 
-            // Verifica o status da resposta
             if (!response.ok) {
                 const errorBody = await response.text();
                 throw new Error(`Falha ao buscar reservas: ${errorBody}`);
             }
 
-            const reservas = await response.json();
-            mostrarReservas(reservas);
+            reservasCache = await response.json(); // Armazena todas as reservas sem filtro
+            mostrarReservas(reservasCache); // Exibe todas as reservas inicialmente
         } catch (error) {
             console.error("Erro ao listar reservas:", error);
-            alert("Erro ao carregar reservas.");
+            exibirMensagem("Erro ao carregar reservas.");
         }
     }
 
-    // Exibir as reservas
+    // Função para formatar a data no formato DD-MM-AAAA
+    function formatarData(data) {
+        const d = new Date(data);
+        const dia = String(d.getDate()).padStart(2, "0");
+        const mes = String(d.getMonth() + 1).padStart(2, "0"); // Mês começa em 0
+        const ano = d.getFullYear();
+        return `${dia}-${mes}-${ano}`;
+    }
+
+    // Função para mostrar as reservas na página
     function mostrarReservas(reservas) {
         const listaReservas = document.getElementById("lista-reservas");
-        listaReservas.innerHTML = ""; 
+        listaReservas.innerHTML = ""; // Limpa a lista de reservas
 
         if (reservas.length === 0) {
             listaReservas.innerHTML = "<p>Não há reservas disponíveis.</p>";
@@ -57,47 +72,75 @@ document.addEventListener("DOMContentLoaded", () => {
             reservaItem.innerHTML = `
                 <h3>${reserva.name}</h3>
                 <p>Telefone: ${reserva.phone}</p>
-                <p>Data: ${new Date(reserva.date).toLocaleDateString()}</p>
+                <p>Data: ${formatarData(reserva.date)}</p> <!-- Formata a data aqui -->
                 <p>Número de Pessoas: ${reserva.num_people}</p>
                 <p>Observação: ${reserva.notes}</p>
+                <p>Status: <strong>${reserva.status}</strong></p>
                 <button class="confirmar-btn" data-id="${reserva._id}">Confirmar Reserva</button>
             `;
             listaReservas.appendChild(reservaItem);
         });
 
-        // Adiciona os eventos para o botão "Confirmar Reserva"
-        document.querySelectorAll(".confirmar-btn").forEach((botao) => {
-            botao.addEventListener("click", async (event) => {
-                const reservaId = event.target.getAttribute("data-id");
-                try {
-                    const response = await fetch(`http://localhost:4000/api/reservas/${reservaId}/confirmar`, {
-                        method: "POST",
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem("token")}`,
-                        },
-                    });
-
-                    if (response.ok) {
-                        alert("Sua reserva foi confirmada! Você receberá uma confirmação por SMS.");
-                        carregarReservas(); // Recarrega as reservas
-                    } else {
-                        const errorData = await response.json();
-                        alert(`Erro ao confirmar a reserva: ${errorData.message}`);
-                    }
-                } catch (error) {
-                    console.error("Erro ao confirmar a reserva:", error);
-                    alert("Erro ao confirmar a reserva. Tente novamente mais tarde.");
-                }
-            });
+        const buttons = document.querySelectorAll(".confirmar-btn");
+        buttons.forEach(button => {
+            button.addEventListener("click", confirmarReserva);
         });
     }
 
-    // Evento para filtrar as reservas pela data
-    document.getElementById("filtrar-btn").addEventListener("click", () => {
-        const dataSelecionada = document.getElementById("data-selecionada").value;
-        carregarReservas(dataSelecionada);
-    });
+    // Função para confirmar a reserva
+    async function confirmarReserva(event) {
+        const reservaId = event.target.getAttribute("data-id");
+    
+        try {
+            const response = await fetch(`http://localhost:4000/api/reservas/${reservaId}/confirmar`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+            });
 
-    // Carregar todas as reservas ao iniciar
-    carregarReservas(); 
+            const data = await response.json();
+            console.log(data);
+            if (response.ok) {
+                exibirMensagem("Reserva confirmada com sucesso!", "sucesso");
+                carregarReservas();
+                
+            } else {
+                exibirMensagem(`Erro ao confirmar reserva: ${data.message || "Erro desconhecido"}`);
+            }
+        } catch (error) {
+            console.error("Erro ao confirmar reserva:", error);
+            exibirMensagem("Erro ao confirmar reserva.");
+        }
+    }
+
+    // Função para filtrar as reservas pela data
+    function filtrarReservasPorData() {
+        const dataSelecionada = dataSelecionadaInput.value;
+
+        if (!dataSelecionada) {
+            exibirMensagem("Por favor, insira uma data para filtrar.");
+            return;
+        }
+
+        // Formatar a data no formato 'DD-MM-AAAA' para 'YYYY-MM-DD'
+        const [dia, mes, ano] = dataSelecionada.split("-"); // Split para separar dia, mês e ano
+        const dataFiltro = new Date(`${ano}-${mes}-${dia}`); // Cria um objeto Date com formato ISO 'YYYY-MM-DD'
+
+        const reservasFiltradas = reservasCache.filter(reserva => {
+            const reservaData = new Date(reserva.date); // Converte a data da reserva para um objeto Date
+            return reservaData.toDateString() === dataFiltro.toDateString(); // Compara as datas
+        });
+
+        mostrarReservas(reservasFiltradas);
+    }
+
+    
+
+    // Adiciona o evento ao botão de filtro
+    filtrarBtn.addEventListener("click", filtrarReservasPorData);
+
+    // Carrega as reservas ao carregar a página
+    carregarReservas();
 });
