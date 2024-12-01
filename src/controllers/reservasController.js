@@ -75,7 +75,7 @@ async function enviarMensagemWhatsApp(nome, dataReserva) {
   }
 
 async function confirmarReserva(req, res) {
-    const { id } = req.params; // Pega o ID da reserva da URL
+    const { id } = req.params; 
     console.log("123");
     try {
         const reserva = await Reserva.findById(id); // Encontra a reserva pelo ID
