@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 conectarDB();
 
 app.use('/api/reservas', reservasRoutes);
-app.post('/api/auth/login', authRoutes);
+app.use('/api/auth/login', authRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
