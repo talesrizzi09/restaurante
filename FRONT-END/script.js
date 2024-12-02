@@ -6,7 +6,7 @@ async function carregarReservas() {
     if (!nomeCliente) return; // Não faz a busca se o nome não estiver definido
 
     try {
-        const response = await fetch(`http://localhost:4000/api/reservas/${nomeCliente}`);
+        const response = await fetch(`https://restaurante-tales.onrender.com/api/reservas/${nomeCliente}`);
         if (response.ok) {
             const reservas = await response.json();
             exibirReservas(reservas); // Você deve ter essa função para exibir as reservas
@@ -47,7 +47,7 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
     };
 
     try {
-        const response = await fetch('http://localhost:4000/api/reservas', {
+        const response = await fetch('https://restaurante-tales.onrender.com/api/reservas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
