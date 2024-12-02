@@ -47,7 +47,7 @@ document.getElementById('reserva-form').addEventListener('submit', async (event)
     };
 
     try {
-        const response = await fetch('https://restaurante-tales.onrender.com/api/reservas', {
+        const response = await fetch('http://localhost:4000/api/reservas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
