@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function carregarReservas() {
         try {
             const response = await fetch(`https://restaurante-api-khpb.onrender.com/api/reservas`, {
+
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,
