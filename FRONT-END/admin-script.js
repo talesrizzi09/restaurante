@@ -5,7 +5,7 @@ document.getElementById('login-form')?.addEventListener('submit', async (event) 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-    const response = await fetch('https://restaurante-tales.onrender.com/api/auth/login', {
+    const response = await fetch(`${process.env.API_URL}api/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ document.getElementById('login-form')?.addEventListener('submit', async (event) 
 async function listarReservas() {
     const token = localStorage.getItem('token');
     
-    const response = await fetch('https://restaurante-tales.onrender.com/api/reservas', {
+    const response = await fetch(`${process.env.API_URL}api/reservas`, {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`

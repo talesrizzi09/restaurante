@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!token) {
         exibirMensagem("Você precisa estar logado para ver as reservas.");
         setTimeout(() => {
-            window.location.href = "admin.html";
+            window.location.href = "login.html";
         }, 3000);
         return;
     }
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Função para carregar todas as reservas do cliente
     async function carregarReservas() {
         try {
-            const response = await fetch('https://restaurante-tales.onrender.com/api/reservas', {
+            const response = await fetch(`${process.env.API_URL}api/reservas`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const reservaId = event.target.getAttribute("data-id");
     
         try {
-            const response = await fetch(`https://restaurante-tales.onrender.com/api/reservas/674e2aa70768132fb136d60e/confirmar`, {
+            const response = await fetch(`${process.env.API_URL}api/reservas/${reservaId}/confirmar`, {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${token}`,

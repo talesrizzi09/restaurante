@@ -4,11 +4,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const reservasRoutes = require('../src/routers/reservas');
 const authRoutes = require('../src/routers/auth'); 
-const { confirmarReserva } = require('../src/controllers/reservasController');
-
 const app = express();
 const PORT = process.env.PORT || 4000;
-
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -16,10 +13,8 @@ app.use(bodyParser.json());
 
 conectarDB();
 
-
-app.use('/api/reservas/${reservaId}/confirmar', confirmarReserva);
 app.use('/api/reservas', reservasRoutes);
-router.post('/api/auth/login', authRoutes);
+app.post('/api/auth/login', authRoutes);
 
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
