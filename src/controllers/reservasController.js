@@ -1,7 +1,7 @@
 const Reserva = require('../model/reserva'); 
 const twilio = require ('twilio');
 const accountSid = 'ACdc931f028e2a1b0d05a36e1eca67b2fb'; // Substitua com suas credenciais
-const authToken = '3abac777aa984cc88d024825f6dce992'; // Substitua com suas credenciais
+const authToken = 'efa7b22da940632eba1b277c92b91547'; // Substitua com suas credenciais
 const client = twilio(accountSid, authToken);
 
 
@@ -76,8 +76,6 @@ async function enviarMensagemWhatsApp(nome, dataReserva) {
 
 async function confirmarReserva(req, res) {
     const { id } = req.params; // Pega o ID da reserva da URL
-    console.log("123");
-    const { id } = req.params; 
     console.log("123");
     try {
         const reserva = await Reserva.findById(id); // Encontra a reserva pelo ID
