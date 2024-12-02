@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/talesrizzi09/xatdemo.git"
+    "url": "git+https://github.com/talesrizzi09/restaurante.git"
   },
   "keywords": [
     "node",
@@ -19,9 +19,9 @@
   "author": "tales rizzi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/talesrizzi09/xatdemo/issues"
+    "url": "https://github.com/talesrizzi09/restaurante/issues"
   },
-  "homepage": "https://github.com/talesrizzi09/xatdemo#readme",
+  "homepage": "https://github.com/talesrizzi09/restaurante#readme",
   "dependencies": {
     "bootstrap-icons": "^1.11.3",
     "cors": "^2.8.5",

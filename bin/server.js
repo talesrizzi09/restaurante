@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 
 conectarDB();
 
-
 app.use('/api/reservas', reservasRoutes);
 app.use('/api/auth', authRoutes); 
 
