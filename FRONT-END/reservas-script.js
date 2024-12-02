@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Função para carregar todas as reservas do cliente
     async function carregarReservas() {
         try {
-            const response = await fetch(`${process.env.API_URL}api/reservas`, {
+            const response = await fetch(`https://restaurante-api-khpb.onrender.com/api/reservas`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const reservaId = event.target.getAttribute("data-id");
     
         try {
-            const response = await fetch(`${process.env.API_URL}api/reservas/${reservaId}/confirmar`, {
+            const response = await fetch(`https://restaurante-api-khpb.onrender.com/api/reservas/${reservaId}/confirmar`, {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${token}`,
