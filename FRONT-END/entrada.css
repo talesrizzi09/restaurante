@@ -80,7 +80,7 @@ header {
 
 .top-container {
     position: relative;
-    background-image: url('../imgs/restaurante.jpg');
+    background-image: url('./imgs/restaurante.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
